@@ -1,0 +1,10 @@
+openapi: 3.0.0
+info:
+  title: Cars API
+  version: '1.0'
+  description: This is a test API of Cars. I built it as a way to explore Stoplight Studio and OpenAPI as tools for building APIs
+servers:
+  - url: 'http://localhost:3000'
+paths: {}
+components:
+  schemas: {}
