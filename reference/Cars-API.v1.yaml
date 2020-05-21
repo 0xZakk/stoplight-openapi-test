@@ -18,17 +18,65 @@ paths:
         content:
           application/json:
             schema:
-              type: string
-            examples: {}
-        description: ''
+              type: object
+              properties:
+                cid:
+                  type: number
+                type:
+                  type: string
+                ops:
+                  type: number
+                encrypt:
+                  type: string
+              required:
+                - cid
+                - type
+                - ops
+            examples:
+              Example:
+                value:
+                  cid: 1000
+                  type: json
+                  ops: 1
+                  encrypt: threshold
   /transactions/read:
     post:
-      summary: ''
+      summary: Read Request
       operationId: post-transactions-read
       responses:
         '200':
           description: OK
       description: Submit a write transaction request. This request will try to take the request body and generate a transaction block in the Chios blockchain that represents reading data from the blockchain.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cid:
+                  type: number
+                type:
+                  type: string
+                ops:
+                  type: number
+                encrypt:
+                  type: string
+                target:
+                  type: string
+              required:
+                - cid
+                - type
+                - ops
+                - target
+            examples:
+              Example:
+                value:
+                  cid: 1000
+                  type: json
+                  ops: 1
+                  target: 1020
+                  encrypt: threshold
+        description: ''
   /transactions/subscribe:
     post:
       summary: Subscribe Request
@@ -37,6 +85,33 @@ paths:
         '200':
           description: OK
       description: Subcribe to updates published by the Chios blockchain.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cid:
+                  type: string
+                topics:
+                  type:
+                    - array
+                    - string
+                  items:
+                    type: number
+            examples:
+              Example (topics):
+                value:
+                  cid: 1000
+                  topics:
+                    - 1
+                    - 2
+                    - 3
+              Example (all):
+                value:
+                  cid: 1000
+                  topics: all
+        description: ''
   /transactions/overwrite:
     post:
       summary: Overwrite Transaction
@@ -45,6 +120,18 @@ paths:
         '200':
           description: OK
       description: "Overwrite a transaction. Because blocks can't be removed, a new block is created which abrogates an old block."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: number
+            examples:
+              Example:
+                value:
+                  id: 1000
   /contract/deploy:
     post:
       summary: Deploy Contract
@@ -53,6 +140,32 @@ paths:
         '200':
           description: OK
       description: Deploy a smart contract to Chios.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: number
+                requests:
+                  type: number
+                encrypt:
+                  type: boolean
+                contract:
+                  type: string
+              required:
+                - id
+                - requests
+                - encrypt
+                - contract
+            examples:
+              Example:
+                value:
+                  id: 1000
+                  requests: 7
+                  encrypt: true
+                  contract: Send $$
   /contract/execute:
     post:
       summary: Execute Contract
@@ -61,6 +174,28 @@ paths:
         '200':
           description: OK
       description: "Execute a contract once it's deployed to Chios."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: number
+                requests:
+                  type: number
+                encrypt:
+                  type: boolean
+              required:
+                - id
+                - requests
+                - encrypt
+            examples:
+              Example:
+                value:
+                  id: 1000
+                  requests: 6
+                  encrypt: true
   /agent/verify:
     post:
       summary: Agent Verification
@@ -69,6 +204,24 @@ paths:
         '200':
           description: OK
       description: Verify an agent ID.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: number
+                ops:
+                  type: number
+              required:
+                - id
+                - ops
+            examples:
+              Example:
+                value:
+                  id: 1000
+                  ops: 3
   /agent/load:
     post:
       summary: Load Agent
@@ -77,6 +230,11 @@ paths:
         '200':
           description: OK
       description: Load an agent.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
   /identity/register:
     post:
       summary: Identity Registration
@@ -85,5 +243,23 @@ paths:
         '200':
           description: OK
       description: Create an Identification ID. A client can make a reqeust to generate a new Identification ID. An existing ID is required for this request.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: number
+                ip:
+                  type: string
+                port:
+                  type: number
+            examples:
+              Example:
+                value:
+                  id: 1000
+                  ip: 127.0.0.1
+                  port: 5000
 components:
   schemas: {}
