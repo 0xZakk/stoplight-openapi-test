@@ -8,11 +8,19 @@ servers:
 paths:
   /transactions/write:
     post:
-      summary: ''
+      summary: Write Request
       operationId: post-transactions-write
       responses:
         '200':
           description: OK
+      description: Submit a write transaction request. This request will try to take the request body and generate a transaction block in the Chios blockchain that represents writing data to the blockchain.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+            examples: {}
+        description: ''
   /transactions/read:
     post:
       summary: ''
@@ -20,54 +28,62 @@ paths:
       responses:
         '200':
           description: OK
+      description: Submit a write transaction request. This request will try to take the request body and generate a transaction block in the Chios blockchain that represents reading data from the blockchain.
   /transactions/subscribe:
     post:
-      summary: ''
+      summary: Subscribe Request
       operationId: post-transactions-subscribe
       responses:
         '200':
           description: OK
+      description: Subcribe to updates published by the Chios blockchain.
   /transactions/overwrite:
     post:
-      summary: ''
+      summary: Overwrite Transaction
       operationId: post-transactions-overwrite
       responses:
         '200':
           description: OK
+      description: "Overwrite a transaction. Because blocks can't be removed, a new block is created which abrogates an old block."
   /contract/deploy:
     post:
-      summary: ''
+      summary: Deploy Contract
       operationId: post-contract-deploy
       responses:
         '200':
           description: OK
+      description: Deploy a smart contract to Chios.
   /contract/execute:
     post:
-      summary: ''
+      summary: Execute Contract
       operationId: post-contract-execute
       responses:
         '200':
           description: OK
+      description: "Execute a contract once it's deployed to Chios."
   /agent/verify:
     post:
-      summary: ''
+      summary: Agent Verification
       operationId: post-agent-verify
       responses:
         '200':
           description: OK
+      description: Verify an agent ID.
   /agent/load:
     post:
-      summary: ''
+      summary: Load Agent
       operationId: post-agent-load
       responses:
         '200':
           description: OK
+      description: Load an agent.
   /identity/register:
     post:
-      summary: ''
+      summary: Identity Registration
       operationId: post-identity-register
       responses:
         '200':
           description: OK
+      description: Create an Identification ID. A client can make a reqeust to generate a new Identification ID. An existing ID is required for this request.
 components:
   schemas: {}
