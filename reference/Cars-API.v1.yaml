@@ -99,6 +99,9 @@ paths:
                     - string
                   items:
                     type: number
+              required:
+                - cid
+                - topics
             examples:
               Example (topics):
                 value:
@@ -128,6 +131,8 @@ paths:
               properties:
                 id:
                   type: number
+              required:
+                - id
             examples:
               Example:
                 value:
@@ -255,6 +260,10 @@ paths:
                   type: string
                 port:
                   type: number
+              required:
+                - id
+                - ip
+                - port
             examples:
               Example:
                 value:
