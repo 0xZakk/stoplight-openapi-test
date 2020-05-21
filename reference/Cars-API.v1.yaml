@@ -5,6 +5,69 @@ info:
   description: This is a test API of Cars. I built it as a way to explore Stoplight Studio and OpenAPI as tools for building APIs
 servers:
   - url: 'http://localhost:3000'
-paths: {}
+paths:
+  /transactions/write:
+    post:
+      summary: ''
+      operationId: post-transactions-write
+      responses:
+        '200':
+          description: OK
+  /transactions/read:
+    post:
+      summary: ''
+      operationId: post-transactions-read
+      responses:
+        '200':
+          description: OK
+  /transactions/subscribe:
+    post:
+      summary: ''
+      operationId: post-transactions-subscribe
+      responses:
+        '200':
+          description: OK
+  /transactions/overwrite:
+    post:
+      summary: ''
+      operationId: post-transactions-overwrite
+      responses:
+        '200':
+          description: OK
+  /contract/deploy:
+    post:
+      summary: ''
+      operationId: post-contract-deploy
+      responses:
+        '200':
+          description: OK
+  /contract/execute:
+    post:
+      summary: ''
+      operationId: post-contract-execute
+      responses:
+        '200':
+          description: OK
+  /agent/verify:
+    post:
+      summary: ''
+      operationId: post-agent-verify
+      responses:
+        '200':
+          description: OK
+  /agent/load:
+    post:
+      summary: ''
+      operationId: post-agent-load
+      responses:
+        '200':
+          description: OK
+  /identity/register:
+    post:
+      summary: ''
+      operationId: post-identity-register
+      responses:
+        '200':
+          description: OK
 components:
   schemas: {}
